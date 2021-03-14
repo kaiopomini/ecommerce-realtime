@@ -22,9 +22,9 @@ const Factory = use('Factory')
 
 Factory.blueprint('App/Models/User', faker => {
   return { 
-    name: fake.first(),
-    surname: fake.last(),
-    email: fake.email({ domain: 'test.com'}),
+    name: faker.first(),
+    surname: faker.last(),
+    email: faker.email({ domain: 'test.com'}),
     password: 'secret'
   }
 
@@ -41,7 +41,7 @@ Factory.blueprint('App/Models/Category', faker => {
 Factory.blueprint('App/Models/Product', faker => {
   return { 
     name: faker.animal(),
-    description: fake.sentence(),
+    description: faker.sentence(),
     price: faker.floating({ min: 0, max: 1000, fixed: 2 })
   }
 })
