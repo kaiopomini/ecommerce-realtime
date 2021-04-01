@@ -5,10 +5,10 @@ const Route = use('Route')
 
 Route.group(() => {
   // Categories ressource routes
-  Route.resource('categories', 'CategoryContoller').apiOnly()
+  Route.resource('categories', 'CategoryController').apiOnly()
 
   // Products ressource routes
-  Route.resource('products', 'ProductContoller').apiOnly()
+  Route.resource('products', 'ProductController').apiOnly()
 
   // Coupon ressource routes
   Route.resource('coupons', 'CouponController').apiOnly()
