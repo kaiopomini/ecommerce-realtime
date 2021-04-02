@@ -90,11 +90,19 @@ class CategoryController {
   async update ({ params: {id}, request, response }) {
 
     const category = await Category.findOrFail(id)
-    const { title, description, image_id } = request.all()
-    category.merge({title, description, image_id})
-    await category.save()
 
-    return response.send(category)
+    try {
+      const { title, description, image_id } = request.all()
+      category.merge({title, description, image_id})
+      await category.save()
+
+      return response.send(category)
+    } catch (error) {
+      return response.status(400).send({
+        message: 'Não foi possivel atualizar esse produto!'
+      })
+    }
+    
 
   }
 
@@ -108,8 +116,15 @@ class CategoryController {
    */
   async destroy ({ params: {id}, request, response }) {
     const category = await Category.findOrFail(id)
-    await category.delete()
-    return response.status(204).send()
+    try {
+      await category.delete()
+      return response.status(204).send()
+    } catch (error) {
+      return response.status(500).send({
+        message: 'Não foi possivel deletar esse produto'
+      })
+    }
+    
   }
 }
 
